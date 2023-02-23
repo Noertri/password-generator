@@ -10,6 +10,7 @@ def generate(length=6, numbers=False, spec_chars=False):
 
     pwd = ""
 
+    # menggunakan modul random choices untuk membut password
     if numbers and not spec_chars:
         letter = random.choices(letters+digits, k=length)
     elif not numbers and spec_chars:
