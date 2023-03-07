@@ -36,4 +36,4 @@ if __name__ == "__main__":
     else:
         print("Panjang password minimal 6 dan maksimal 32!!!")
 
-    os.system("pause")
+   #os.system("pause")
