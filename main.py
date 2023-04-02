@@ -1,6 +1,5 @@
 import random
 import string
-import os
 
 
 def generate(length=6, numbers=False, spec_chars=False, upper_case=False):
