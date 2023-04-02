@@ -25,6 +25,7 @@ def generate(length=6, numbers=False, spec_chars=False, upper_case=False):
 if __name__ == "__main__":
     print("Program untuk membuat password acak secara otomatis")
 
+<<<<<<< HEAD
     while True:
         pwd_length = int(input("Panjang password: ").strip())
         if 6 <= pwd_length <= 26:
@@ -38,3 +39,5 @@ if __name__ == "__main__":
 
         if input("Berhenti?[Y/n]: ").lower() == "y":
             break
+=======
+>>>>>>> 17dcf953ba7291c6250ff1fe9a7fa2f96ea151b5
