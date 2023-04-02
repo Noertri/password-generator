@@ -11,24 +11,24 @@ def generate(length=6, numbers=False, spec_chars=False, upper_case=False):
 
     pwd = ""
 
-    # menggunakan modul random choices untuk membuat password
+    # menggunakan modul random sample untuk membuat password
     
     if numbers and spec_chars and upper_case:
-        p = random.choices(letters+puncts+digits, k=length)
+        p = random.sample(letters+puncts+digits, k=length)
     elif numbers and spec_chars:
-        p = random.choices(lower_letters+puncts+digits, k=length)
+        p = random.sample(lower_letters+puncts+digits, k=length)
     elif numbers and upper_case:
-        p = random.choices(letters+digits, k=length)
+        p = random.sample(letters+digits, k=length)
     elif spec_chars and upper_case:
-        p = random.choices(letters+puncts, k=length)
+        p = random.sample(letters+puncts, k=length)
     elif spec_chars:
-        p = random.choices(lower_letters+puncts, k=length)
+        p = random.sample(lower_letters+puncts, k=length)
     elif numbers:
-        p = random.choices(lower_letters+digits, k=length)
+        p = random.sample(lower_letters+digits, k=length)
     elif upper_case:
-        p = random.choices(letters, k=length)
+        p = random.sample(letters, k=length)
     else:
-        p = random.choices(lower_letters, k=length)
+        p = random.sample(lower_letters, k=length)
 
     pwd += "".join(p)
 
@@ -47,7 +47,7 @@ if __name__ == "__main__":
             pwd = generate(length=pwd_length, numbers=pwd_numbers, spec_chars=pwd_spec_chars, upper_case=pwd_upper)
             print("Password anda: ", pwd)
         else:
-            print("Panjang password minimal 6 dan maksimal 32!!!")
+            print("Panjang password minimal 6 dan maksimal 20 karakter!!!")
 
         if input("Berhenti?[Y/n]: ").lower() == "y":
             break
