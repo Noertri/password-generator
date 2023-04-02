@@ -14,7 +14,7 @@ def generate(length=6, numbers=False, spec_chars=False, upper_case=False):
         sequences += string.digits
 
     if spec_chars:
-        sequences += "!@#$%&-?"
+        sequences += "!@#$%&-?_"
 
     p = random.sample(sequences, k=length)
     pwd = "".join(p)
