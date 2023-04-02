@@ -36,5 +36,5 @@ if __name__ == "__main__":
         else:
             print("Panjang password minimal 6 dan maksimal 26 karakter!!!")
 
-        if input("Berhenti?[Y/n]: ").lower() == "y":
+        if input("Berhenti?[y/n]: ").lower() == "y":
             break
