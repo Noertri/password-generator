@@ -3,24 +3,34 @@ import string
 import os
 
 
-def generate(length=6, numbers=False, spec_chars=False):
+def generate(length=6, numbers=False, spec_chars=False, upper_case=False):
     letters = string.ascii_letters
+    lower_letters = string.ascii_lowercase
     digits = string.digits
-    puncts = "!@#$%&_?"
+    puncts = "!@#$%&-?"
 
     pwd = ""
 
     # menggunakan modul random choices untuk membuat password
-    if numbers and spec_chars:
-        letter = random.choices(letters+puncts+digits, k=length)
+    
+    if numbers and spec_chars and upper_case:
+        p = random.choices(letters+puncts+digits, k=length)
+    elif numbers and spec_chars:
+        p = random.choices(lower_letters+puncts+digits, k=length)
+    elif numbers and upper_case:
+        p = random.choices(letters+digits, k=length)
+    elif spec_chars and upper_case:
+        p = random.choices(letters+puncts, k=length)
     elif spec_chars:
-        letter = random.choices(letters+puncts, k=length)
+        p = random.choices(lower_letters+puncts, k=length)
     elif numbers:
-        letter = random.choices(letters+digits, k=length)     
+        p = random.choices(lower_letters+digits, k=length)
+    elif upper_case:
+        p = random.choices(letters, k=length)
     else:
-        letter = random.choices(letters, k=length)
+        p = random.choices(lower_letters, k=length)
 
-    pwd = "".join(letter)
+    pwd += "".join(p)
 
     return pwd
 
@@ -30,10 +40,11 @@ if __name__ == "__main__":
 
     while True:
         pwd_length = int(input("Panjang password: ").strip())
-        if 6 <= pwd_length <= 32:
-            pwd_numbers = input("Tambahkan digit angka [y/n]: ").lower() == "y"
-            pwd_spec_chars = input("Tambahkan karakter khusus [y/n]: ").lower() == "y"
-            pwd = generate(length=pwd_length, numbers=pwd_numbers, spec_chars=pwd_spec_chars)
+        if 6 <= pwd_length <= 20:
+            pwd_upper = input("Huruf kapital [y/n]: ").lower() == "y"
+            pwd_numbers = input("Digit angka [y/n]: ").lower() == "y"
+            pwd_spec_chars = input("Karakter khusus [y/n]: ").lower() == "y"
+            pwd = generate(length=pwd_length, numbers=pwd_numbers, spec_chars=pwd_spec_chars, upper_case=pwd_upper)
             print("Password anda: ", pwd)
         else:
             print("Panjang password minimal 6 dan maksimal 32!!!")
